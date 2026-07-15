@@ -45,12 +45,12 @@
     overflow-x:hidden;
   }
   ::selection{ background:var(--accent); color:var(--paper); }
-
+ 
   .grain{
     position:fixed; inset:0; pointer-events:none; z-index:2; opacity:0.05; mix-blend-mode:multiply;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
-
+ 
   h1,h2,h3, .display{
     font-family:'Fraunces', serif;
     font-variation-settings: "SOFT" var(--soft-axis);
@@ -74,11 +74,11 @@
   }
   a{color:var(--accent);}
   p{ line-height:1.65; color:var(--ink-soft); font-size:1.02rem;}
-
+ 
   .wrap{ max-width:1080px; margin:0 auto; padding:0 32px; }
   section{ padding:96px 0; border-bottom:1px solid var(--line); position:relative; }
   section:last-of-type{ border-bottom:none; }
-
+ 
   /* ---------- NAV DOTS ---------- */
   .navdots{
     position:fixed; right:26px; top:50%; transform:translateY(-50%);
@@ -91,7 +91,7 @@
   }
   .navdots a.active{ background:var(--accent); border-color:var(--accent); opacity:1; transform:scale(1.3); }
   @media (max-width: 860px){ .navdots{display:none;} }
-
+ 
   /* ---------- HERO ---------- */
   .hero{
     min-height:100vh; display:flex; flex-direction:column; justify-content:center;
@@ -110,7 +110,7 @@
   .hero-meta{
     margin-top:44px; display:flex; gap:36px; flex-wrap:wrap; align-items:center;
   }
-
+ 
   /* seal toggle */
   .seal-toggle{
     display:flex; align-items:center; gap:16px; padding:14px 22px;
@@ -129,7 +129,7 @@
   html[data-mode="new"] .seal-dot{ transform: rotate(8deg); }
   .seal-toggle-label{ font-family:'IBM Plex Mono', monospace; font-size:0.82rem; }
   .seal-toggle-label b{ color:var(--accent); }
-
+ 
   .stamp{
     position:absolute; border:3px solid var(--accent); color:var(--accent);
     font-family:'IBM Plex Mono', monospace; font-weight:700; font-size:0.85rem;
@@ -138,11 +138,11 @@
     top:36px; right:0px;
   }
   .stamp::after{ content: var(--stamp-word); }
-
+ 
   /* ---------- INTRO TEXT BLOCK ---------- */
   .lede{ max-width:760px; }
   .lede p{ font-size:1.08rem; }
-
+ 
   /* ---------- STAT CARDS ---------- */
   .stat-grid{
     display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -157,7 +157,7 @@
   }
   .stat-card .lbl{ font-size:0.86rem; color:var(--ink-soft); margin-top:6px; display:block; }
   .stat-card .old-new{ font-size:0.74rem; font-family:'IBM Plex Mono',monospace; opacity:0.6; margin-top:10px; display:block;}
-
+ 
   /* ---------- TAX YEAR MERGE ---------- */
   .merge-stage{
     display:flex; align-items:center; justify-content:center; gap:0;
@@ -188,7 +188,7 @@
     transition:all 0.3s ease;
   }
   .merge-btn:hover{ background:var(--ink); color:var(--paper); }
-
+ 
   /* ---------- FLIP CARDS (section mapping) ---------- */
   .flip-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px; margin-top:44px; }
   .flip-card{ perspective:1200px; height:150px; cursor:pointer; }
@@ -207,7 +207,7 @@
   .flip-face .tag{ font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; opacity:0.7;}
   .flip-face .sec{ font-family:'Fraunces', serif; font-variation-settings:"SOFT" var(--soft-axis); font-size:1.3rem; font-weight:600; margin:8px 0;}
   .flip-hint{ text-align:center; font-family:'IBM Plex Mono',monospace; font-size:0.76rem; color:var(--ink-soft); margin-top:14px; opacity:0.7;}
-
+ 
   /* ---------- TIMELINE ---------- */
   .timeline{ margin-top:56px; position:relative; padding-left:26px; border-left:2px solid var(--line); }
   .tl-item{ position:relative; padding-bottom:44px; padding-left:30px; }
@@ -219,7 +219,7 @@
   .tl-item .date{ font-family:'IBM Plex Mono',monospace; font-size:0.78rem; color:var(--accent); font-weight:600; }
   .tl-item h3{ font-size:1.2rem; margin-top:4px; }
   .tl-item p{ margin-top:6px; max-width:640px; }
-
+ 
   /* ---------- CHECKLIST ---------- */
   .check-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:22px; margin-top:44px; }
   .check-item{ display:flex; gap:14px; align-items:flex-start; }
@@ -228,7 +228,7 @@
     color:var(--accent); display:flex; align-items:center; justify-content:center; font-size:0.8rem; margin-top:2px;
   }
   .check-item p{ margin:0; font-size:0.96rem; }
-
+ 
   /* ---------- TABS (implications) ---------- */
   .tabs{ display:flex; gap:8px; flex-wrap:wrap; margin-top:40px; border-bottom:1px solid var(--line); padding-bottom:0;}
   .tab-btn{
@@ -240,30 +240,30 @@
   .tab-panel{ display:none; padding-top:34px; animation:fadein 0.4s ease; }
   .tab-panel.active{ display:block; }
   @keyframes fadein{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
-
+ 
   /* ---------- MARGIN NOTES (critical analysis) ---------- */
   .note{
     border-left:3px solid var(--gold); padding:18px 26px; margin:22px 0; background:var(--card-bg);
   }
   .note .tag{ font-family:'IBM Plex Mono',monospace; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--gold); }
   .note p{ margin-top:8px; }
-
+ 
   /* ---------- FOOTER ---------- */
   footer{ padding:64px 0 90px; }
   footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px; }
   footer p{ font-size:0.86rem; }
   .ref-list{ font-size:0.86rem; color:var(--ink-soft); max-width:640px; }
   .ref-list li{ margin-bottom:10px; }
-
+ 
   .split{ display:grid; grid-template-columns:1fr 1fr; gap:48px; }
   @media (max-width:760px){ .split{ grid-template-columns:1fr; } .wrap{padding:0 20px;} section{padding:64px 0;} }
-
+ 
   .table-wrap{ overflow-x:auto; margin-top:40px; }
   table.cmp{ width:100%; border-collapse:collapse; font-size:0.92rem; }
   table.cmp th, table.cmp td{ padding:14px 16px; border:1px solid var(--line); text-align:left; vertical-align:top;}
   table.cmp th{ font-family:'IBM Plex Mono',monospace; font-size:0.74rem; text-transform:uppercase; letter-spacing:0.06em; background:var(--card-bg); color:var(--ink-soft); }
   table.cmp td:first-child{ font-weight:600; }
-
+ 
   .quiz-btn{
     margin-top:18px; padding:10px 20px; border-radius:100px; border:1.5px solid var(--ink);
     background:transparent; font-family:'IBM Plex Mono',monospace; font-size:0.78rem; cursor:pointer;
@@ -272,7 +272,7 @@
 </head>
 <body>
 <div class="grain"></div>
-
+ 
 <nav class="navdots" id="navdots">
   <a href="#hero" data-target="hero"></a>
   <a href="#why" data-target="why"></a>
@@ -285,7 +285,7 @@
   <a href="#critical" data-target="critical"></a>
   <a href="#conclusion" data-target="conclusion"></a>
 </nav>
-
+ 
 <!-- HERO -->
 <section class="hero" id="hero">
   <div class="wrap" style="position:relative;">
@@ -302,7 +302,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- WHY THE REFORM -->
 <section id="why">
   <div class="wrap">
@@ -320,7 +320,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- STRUCTURAL COMPARISON -->
 <section id="structure">
   <div class="wrap">
@@ -356,7 +356,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- TAX YEAR MERGE -->
 <section id="taxyear">
   <div class="wrap">
@@ -374,7 +374,7 @@
     <button class="merge-btn" id="mergeBtn">Run the merge →</button>
   </div>
 </section>
-
+ 
 <!-- SECTION REMAPPING -->
 <section id="remap">
   <div class="wrap">
@@ -385,7 +385,7 @@
     <p class="flip-hint">tap any card to flip it</p>
   </div>
 </section>
-
+ 
 <!-- TRANSITION TIMELINE -->
 <section id="transition">
   <div class="wrap">
@@ -421,7 +421,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- WHAT HASN'T CHANGED -->
 <section id="unchanged">
   <div class="wrap">
@@ -437,7 +437,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- IMPLICATIONS -->
 <section id="implications">
   <div class="wrap">
@@ -455,7 +455,7 @@
     <div class="tab-panel" id="t4"><p>The reform mirrors a global shift toward simplified, principle‑based tax codes and taxpayer‑centric compliance — aligning with India's wider digital tax push: pre‑filled returns, the Annual Information Statement, and faceless assessment.</p></div>
   </div>
 </section>
-
+ 
 <!-- CRITICAL ANALYSIS -->
 <section id="critical">
   <div class="wrap">
@@ -479,7 +479,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- CONCLUSION -->
 <section id="conclusion">
   <div class="wrap">
@@ -495,7 +495,7 @@
     </div>
   </div>
 </section>
-
+ 
 <footer>
   <div class="wrap">
     <div>
@@ -512,7 +512,7 @@
     </div>
   </div>
 </footer>
-
+ 
 <script>
 // ---- Seal toggle: switch reading mode between ITA 1961 and ITA 2025 ----
 const html = document.documentElement;
@@ -528,7 +528,7 @@ sealToggle.addEventListener('click', ()=>{
   setMode(html.getAttribute('data-mode') === 'old' ? 'new' : 'old');
 });
 sealToggle.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); sealToggle.click(); }});
-
+ 
 // ---- Nav dots active state ----
 const dots = document.querySelectorAll('#navdots a');
 const sections = [...dots].map(d => document.getElementById(d.dataset.target));
@@ -539,7 +539,7 @@ function updateDots(){
 }
 window.addEventListener('scroll', updateDots);
 updateDots();
-
+ 
 // ---- Tax year merge animation ----
 const mergeBtn = document.getElementById('mergeBtn');
 const mergeStage = document.getElementById('mergeStage');
@@ -547,7 +547,7 @@ mergeBtn.addEventListener('click', ()=>{
   const merged = mergeStage.classList.toggle('merged');
   mergeBtn.textContent = merged ? '← Undo the merge' : 'Run the merge →';
 });
-
+ 
 // ---- Section remapping flip cards ----
 const mappings = [
   {tag:'Charging section', old:'Section 4', neu:'Chapter II (simplified charging provision)'},
@@ -577,7 +577,7 @@ mappings.forEach(m=>{
   card.addEventListener('click', ()=> card.classList.toggle('flipped'));
   flipGrid.appendChild(card);
 });
-
+ 
 // ---- Implications tabs ----
 const tabBar = document.getElementById('tabBar');
 tabBar.addEventListener('click', (e)=>{
@@ -588,7 +588,7 @@ tabBar.addEventListener('click', (e)=>{
   btn.classList.add('active');
   document.getElementById(btn.dataset.tab).classList.add('active');
 });
-
+ 
 // ---- Count-up animation for stat cards ----
 const statObserver = new IntersectionObserver((entries)=>{
   entries.forEach(entry=>{
