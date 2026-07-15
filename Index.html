@@ -1,255 +1,610 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-mode="old">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Income-tax Act, 1961 vs. Income-tax Act, 2025 — Poster</title>
+<title>Two Acts, One Law — ITA 1961 vs ITA 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..700,0..100&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --navy:#1F3864;
-    --navy2:#2E5395;
-    --navy-dark:#16294f;
-    --maroon:#7A2333;
-    --black:#1A1A1A;
-    --gray:#595959;
-    --light:#EFEFEF;
-    --light2:#E4ECF7;
-    --border:#BBBBBB;
+    --paper:#ece3cf;
+    --paper-2:#e2d7bd;
+    --ink:#221c14;
+    --ink-soft:#5b5343;
+    --accent:#7a2333;
+    --accent-2:#96384a;
+    --gold:#a9832f;
+    --line: rgba(34,28,20,0.18);
+    --soft-axis: 100;
+    --card-bg: #f5eeda;
+    --stamp-word: "REPEALED";
   }
-  *{ box-sizing:border-box; }
+  html[data-mode="new"]{
+    --paper:#eef2f0;
+    --paper-2:#e2ebe6;
+    --ink:#152420;
+    --ink-soft:#4d5e58;
+    --accent:#0f6e5c;
+    --accent-2:#12876f;
+    --gold:#8a9c3f;
+    --line: rgba(15,36,32,0.15);
+    --soft-axis: 20;
+    --card-bg: #f7fbf9;
+    --stamp-word: "IN FORCE";
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
   body{
     margin:0;
-    background:#d9d9d9;
-    font-family: "Times New Roman", Times, serif;
-    color:var(--black);
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    transition: background 0.6s ease, color 0.6s ease;
+    overflow-x:hidden;
   }
-  .page{
-    width:420mm;
-    min-height:594mm;
-    margin:20px auto;
-    background:#fff;
-    box-shadow:0 0 12px rgba(0,0,0,0.25);
-    position:relative;
-    overflow:hidden;
+  ::selection{ background:var(--accent); color:var(--paper); }
+
+  .grain{
+    position:fixed; inset:0; pointer-events:none; z-index:2; opacity:0.05; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
-  /* ---------- HEADER ---------- */
-  header{
-    background:var(--navy);
-    padding:8mm 14mm 8mm 14mm;
-    position:relative;
+  h1,h2,h3, .display{
+    font-family:'Fraunces', serif;
+    font-variation-settings: "SOFT" var(--soft-axis);
+    transition: font-variation-settings 0.6s ease;
+    font-weight:600;
+    margin:0;
+    color:var(--ink);
   }
-  header::after{
-    content:"";
-    display:block;
-    height:3mm;
-    background:var(--navy2);
-    margin: 6mm -14mm 0 -14mm;
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    font-size:0.72rem;
+    color:var(--accent);
+    font-weight:600;
   }
-  .uni-line{ color:#fff; font-size:11.5pt; margin:0 0 6mm 0; }
-  h1.title{ color:#fff; font-size:26pt; margin:0 0 4mm 0; line-height:1.15; }
-  p.subtitle{ color:#fff; font-size:14pt; margin:0 0 10mm 0; }
+  .section-code{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    color:var(--ink-soft);
+  }
+  a{color:var(--accent);}
+  p{ line-height:1.65; color:var(--ink-soft); font-size:1.02rem;}
 
-  .header-row{
-    display:flex;
-    gap:10mm;
-    align-items:stretch;
-  }
-  .stat-box{
-    flex:1;
-    background:var(--navy-dark);
-    border-radius:3mm;
-    padding:6mm;
-    color:#fff;
-  }
-  .stat-box .big{ font-size:16pt; font-weight:bold; display:block; margin-bottom:3mm; }
-  .stat-box .lbl{ font-size:9.5pt; color:#C9D6EC; }
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 32px; }
+  section{ padding:96px 0; border-bottom:1px solid var(--line); position:relative; }
+  section:last-of-type{ border-bottom:none; }
 
-  .author-box{
-    flex:2.6;
-    background:var(--navy-dark);
-    border-radius:4mm;
-    padding:6mm 8mm;
-    color:#fff;
+  /* ---------- NAV DOTS ---------- */
+  .navdots{
+    position:fixed; right:26px; top:50%; transform:translateY(-50%);
+    display:flex; flex-direction:column; gap:14px; z-index:50;
   }
-  .author-box b{ font-size:12pt; display:block; margin-bottom:3mm; }
-  .author-box div{ font-size:10.5pt; margin-bottom:1.5mm; }
-
-  /* ---------- BODY / COLUMNS ---------- */
-  .columns{
-    display:flex;
-    gap:10mm;
-    padding:8mm 14mm 6mm 14mm;
-    align-items:flex-start;
+  .navdots a{
+    width:9px; height:9px; border-radius:50%; background:transparent;
+    border:1.5px solid var(--ink-soft); display:block; opacity:0.55;
+    transition: all 0.3s ease;
   }
-  .col{ flex:1; min-width:0; }
+  .navdots a.active{ background:var(--accent); border-color:var(--accent); opacity:1; transform:scale(1.3); }
+  @media (max-width: 860px){ .navdots{display:none;} }
 
-  .col-title{
-    background:var(--navy);
-    color:#fff;
-    font-size:14.5pt;
-    font-weight:bold;
-    padding:6px 8px;
-    margin:0 0 8px 0;
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100vh; display:flex; flex-direction:column; justify-content:center;
+    padding-top:64px; padding-bottom:64px; border-bottom:1px solid var(--line);
   }
-  .col-title.alt{ background:var(--navy); }
-
-  p.body-text{ font-size:10pt; line-height:1.4; margin:0 0 5px 0; }
-  .small-note{ font-size:8pt; line-height:1.35; color:var(--gray); margin:4px 0 10px 0; }
-
-  ul.dash-list{ list-style:none; margin:0 0 10px 0; padding:0; }
-  ul.dash-list li{
-    font-size:10pt; line-height:1.4; margin-bottom:4px; padding-left:14px; position:relative;
+  .hero .eyebrow{margin-bottom:18px; display:block;}
+  .hero h1{
+    font-size:clamp(2.6rem, 6vw, 5.2rem);
+    line-height:1.02;
+    max-width:880px;
   }
-  ul.dash-list li::before{ content:"\2022"; position:absolute; left:0; }
-
-  table{ width:100%; border-collapse:collapse; margin-bottom:6px; font-size:9pt; }
-  table th{
-    background:var(--navy); color:#fff; text-align:left; padding:5px 6px; font-size:9pt;
+  .hero h1 em{ font-style:italic; color:var(--accent); }
+  .hero-sub{
+    max-width:620px; margin-top:26px; font-size:1.12rem;
   }
-  table.maroon th{ background:var(--maroon); }
-  table td{ padding:5px 6px; border:0.5px solid var(--border); vertical-align:top; }
-  table tr:nth-child(even) td{ background:var(--light); }
+  .hero-meta{
+    margin-top:44px; display:flex; gap:36px; flex-wrap:wrap; align-items:center;
+  }
 
-  .timeline-table td{ border:none; padding:4px 8px 10px 10px; vertical-align:top; }
-  .timeline-table td.date{ border-left:1.5px solid var(--navy2); color:var(--maroon); font-weight:bold; font-size:9.5pt; white-space:nowrap; }
-  .timeline-table td.desc{ font-size:9.5pt; }
+  /* seal toggle */
+  .seal-toggle{
+    display:flex; align-items:center; gap:16px; padding:14px 22px;
+    border:1.5px solid var(--ink); border-radius:100px; background:var(--card-bg);
+    cursor:pointer; user-select:none; transition: all 0.4s ease;
+  }
+  .seal-toggle:hover{ box-shadow: 0 0 0 4px var(--line); }
+  .seal-dot{
+    width:46px; height:46px; border-radius:50%; border:2px solid var(--accent);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:0.62rem;
+    color:var(--accent); position:relative; flex-shrink:0;
+    transform: rotate(-8deg);
+    transition: all 0.5s cubic-bezier(.6,-0.2,.3,1.4);
+  }
+  html[data-mode="new"] .seal-dot{ transform: rotate(8deg); }
+  .seal-toggle-label{ font-family:'IBM Plex Mono', monospace; font-size:0.82rem; }
+  .seal-toggle-label b{ color:var(--accent); }
+
+  .stamp{
+    position:absolute; border:3px solid var(--accent); color:var(--accent);
+    font-family:'IBM Plex Mono', monospace; font-weight:700; font-size:0.85rem;
+    letter-spacing:0.15em; padding:8px 16px; border-radius:6px;
+    transform: rotate(-9deg); opacity:0.75; pointer-events:none;
+    top:36px; right:0px;
+  }
+  .stamp::after{ content: var(--stamp-word); }
+
+  /* ---------- INTRO TEXT BLOCK ---------- */
+  .lede{ max-width:760px; }
+  .lede p{ font-size:1.08rem; }
+
+  /* ---------- STAT CARDS ---------- */
+  .stat-grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:1px; background:var(--line); border:1px solid var(--line); margin-top:48px;
+  }
+  .stat-card{
+    background:var(--card-bg); padding:32px 26px; transition:background 0.6s ease;
+  }
+  .stat-card .num{
+    font-family:'Fraunces', serif; font-variation-settings:"SOFT" var(--soft-axis);
+    font-size:2.6rem; color:var(--accent); display:block; font-weight:600;
+  }
+  .stat-card .lbl{ font-size:0.86rem; color:var(--ink-soft); margin-top:6px; display:block; }
+  .stat-card .old-new{ font-size:0.74rem; font-family:'IBM Plex Mono',monospace; opacity:0.6; margin-top:10px; display:block;}
+
+  /* ---------- TAX YEAR MERGE ---------- */
+  .merge-stage{
+    display:flex; align-items:center; justify-content:center; gap:0;
+    margin:56px 0 20px; flex-wrap:wrap; min-height:180px;
+  }
+  .merge-box{
+    width:220px; padding:26px 20px; border:1.5px solid var(--ink); background:var(--card-bg);
+    text-align:center; transition: all 0.9s cubic-bezier(.5,0,.2,1);
+    font-family:'IBM Plex Mono', monospace; font-size:0.9rem;
+  }
+  .merge-box b{ display:block; font-family:'Fraunces',serif; font-variation-settings:"SOFT" var(--soft-axis); font-size:1.25rem; font-weight:600; margin-bottom:6px;}
+  .merge-arrow{ width:60px; text-align:center; color:var(--ink-soft); font-size:1.4rem; }
+  .merge-stage.merged .merge-box.a{ transform: translateX(130px) scale(0.85); opacity:0; }
+  .merge-stage.merged .merge-box.b{ transform: translateX(-130px) scale(0.85); opacity:0; }
+  .merge-stage.merged .merge-arrow{ opacity:0; }
+  .merge-result{
+    width:260px; padding:30px 20px; border:2px solid var(--accent); background:var(--card-bg);
+    text-align:center; position:absolute; opacity:0; transform:scale(0.8);
+    transition: all 0.7s cubic-bezier(.5,0,.2,1.6) 0.2s;
+    font-family:'IBM Plex Mono', monospace;
+  }
+  .merge-result b{ display:block; font-family:'Fraunces',serif; font-variation-settings:"SOFT" var(--soft-axis); font-size:1.5rem; font-weight:700; color:var(--accent); margin-bottom:8px;}
+  .merge-stage.merged .merge-result{ opacity:1; transform:scale(1); position:static; }
+  .merge-btn{
+    display:block; margin:0 auto; padding:10px 22px; border-radius:100px;
+    border:1.5px solid var(--ink); background:transparent; color:var(--ink);
+    font-family:'IBM Plex Mono', monospace; font-size:0.8rem; cursor:pointer;
+    transition:all 0.3s ease;
+  }
+  .merge-btn:hover{ background:var(--ink); color:var(--paper); }
+
+  /* ---------- FLIP CARDS (section mapping) ---------- */
+  .flip-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px; margin-top:44px; }
+  .flip-card{ perspective:1200px; height:150px; cursor:pointer; }
+  .flip-inner{
+    position:relative; width:100%; height:100%; transition:transform 0.6s cubic-bezier(.5,0,.2,1);
+    transform-style:preserve-3d;
+  }
+  .flip-card.flipped .flip-inner{ transform:rotateY(180deg); }
+  .flip-face{
+    position:absolute; inset:0; backface-visibility:hidden; border:1.5px solid var(--ink);
+    padding:22px; display:flex; flex-direction:column; justify-content:space-between;
+  }
+  .flip-front{ background:var(--card-bg); }
+  .flip-back{ background:var(--accent); color:var(--paper); transform:rotateY(180deg); border-color:var(--accent); }
+  .flip-back .section-code{ color:var(--paper); opacity:0.85; }
+  .flip-face .tag{ font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; opacity:0.7;}
+  .flip-face .sec{ font-family:'Fraunces', serif; font-variation-settings:"SOFT" var(--soft-axis); font-size:1.3rem; font-weight:600; margin:8px 0;}
+  .flip-hint{ text-align:center; font-family:'IBM Plex Mono',monospace; font-size:0.76rem; color:var(--ink-soft); margin-top:14px; opacity:0.7;}
+
+  /* ---------- TIMELINE ---------- */
+  .timeline{ margin-top:56px; position:relative; padding-left:26px; border-left:2px solid var(--line); }
+  .tl-item{ position:relative; padding-bottom:44px; padding-left:30px; }
+  .tl-item:last-child{ padding-bottom:0; }
+  .tl-item::before{
+    content:""; position:absolute; left:-38px; top:2px; width:14px; height:14px; border-radius:50%;
+    background:var(--paper); border:2.5px solid var(--accent);
+  }
+  .tl-item .date{ font-family:'IBM Plex Mono',monospace; font-size:0.78rem; color:var(--accent); font-weight:600; }
+  .tl-item h3{ font-size:1.2rem; margin-top:4px; }
+  .tl-item p{ margin-top:6px; max-width:640px; }
+
+  /* ---------- CHECKLIST ---------- */
+  .check-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:22px; margin-top:44px; }
+  .check-item{ display:flex; gap:14px; align-items:flex-start; }
+  .check-item .mark{
+    flex-shrink:0; width:26px; height:26px; border-radius:50%; border:1.5px solid var(--accent);
+    color:var(--accent); display:flex; align-items:center; justify-content:center; font-size:0.8rem; margin-top:2px;
+  }
+  .check-item p{ margin:0; font-size:0.96rem; }
+
+  /* ---------- TABS (implications) ---------- */
+  .tabs{ display:flex; gap:8px; flex-wrap:wrap; margin-top:40px; border-bottom:1px solid var(--line); padding-bottom:0;}
+  .tab-btn{
+    padding:12px 20px; background:none; border:none; cursor:pointer;
+    font-family:'IBM Plex Mono', monospace; font-size:0.82rem; color:var(--ink-soft);
+    border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 0.25s ease;
+  }
+  .tab-btn.active{ color:var(--accent); border-bottom-color:var(--accent); }
+  .tab-panel{ display:none; padding-top:34px; animation:fadein 0.4s ease; }
+  .tab-panel.active{ display:block; }
+  @keyframes fadein{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
+
+  /* ---------- MARGIN NOTES (critical analysis) ---------- */
+  .note{
+    border-left:3px solid var(--gold); padding:18px 26px; margin:22px 0; background:var(--card-bg);
+  }
+  .note .tag{ font-family:'IBM Plex Mono',monospace; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--gold); }
+  .note p{ margin-top:8px; }
 
   /* ---------- FOOTER ---------- */
-  footer{
-    background:var(--light);
-    padding:5mm 14mm;
-    display:flex;
-    justify-content:space-between;
-    gap:20px;
-    font-size:8.5pt;
-    color:var(--gray);
-    position:absolute;
-    bottom:0; left:0; right:0;
-  }
+  footer{ padding:64px 0 90px; }
+  footer .wrap{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px; }
+  footer p{ font-size:0.86rem; }
+  .ref-list{ font-size:0.86rem; color:var(--ink-soft); max-width:640px; }
+  .ref-list li{ margin-bottom:10px; }
 
-  @media print{
-    body{ background:#fff; }
-    .page{ box-shadow:none; margin:0; }
-    @page{ size: A2 portrait; margin:0; }
-  }
+  .split{ display:grid; grid-template-columns:1fr 1fr; gap:48px; }
+  @media (max-width:760px){ .split{ grid-template-columns:1fr; } .wrap{padding:0 20px;} section{padding:64px 0;} }
 
-  @media screen and (max-width: 900px){
-    .page{ width:100%; min-height:auto; }
-    .columns{ flex-direction:column; }
-    .header-row{ flex-direction:column; }
-    h1.title{ font-size:20pt; }
+  .table-wrap{ overflow-x:auto; margin-top:40px; }
+  table.cmp{ width:100%; border-collapse:collapse; font-size:0.92rem; }
+  table.cmp th, table.cmp td{ padding:14px 16px; border:1px solid var(--line); text-align:left; vertical-align:top;}
+  table.cmp th{ font-family:'IBM Plex Mono',monospace; font-size:0.74rem; text-transform:uppercase; letter-spacing:0.06em; background:var(--card-bg); color:var(--ink-soft); }
+  table.cmp td:first-child{ font-weight:600; }
+
+  .quiz-btn{
+    margin-top:18px; padding:10px 20px; border-radius:100px; border:1.5px solid var(--ink);
+    background:transparent; font-family:'IBM Plex Mono',monospace; font-size:0.78rem; cursor:pointer;
   }
 </style>
 </head>
 <body>
-<div class="page">
+<div class="grain"></div>
 
-  <header>
-    <p class="uni-line">CHRIST (Deemed to be University), Bengaluru&nbsp;&nbsp;|&nbsp;&nbsp;School of Commerce, Finance and Accountancy</p>
-    <h1 class="title">Income-tax Act, 1961 vs. Income-tax Act, 2025</h1>
-    <p class="subtitle">A Comparative Study: Key Similarities, Differences and Implications</p>
+<nav class="navdots" id="navdots">
+  <a href="#hero" data-target="hero"></a>
+  <a href="#why" data-target="why"></a>
+  <a href="#structure" data-target="structure"></a>
+  <a href="#taxyear" data-target="taxyear"></a>
+  <a href="#remap" data-target="remap"></a>
+  <a href="#transition" data-target="transition"></a>
+  <a href="#unchanged" data-target="unchanged"></a>
+  <a href="#implications" data-target="implications"></a>
+  <a href="#critical" data-target="critical"></a>
+  <a href="#conclusion" data-target="conclusion"></a>
+</nav>
 
-    <div class="header-row">
-      <div class="stat-box"><span class="big">800+&nbsp;&nbsp;&#8594;&nbsp;&nbsp;536</span><span class="lbl">Sections</span></div>
-      <div class="stat-box"><span class="big">2&nbsp;&nbsp;&#8594;&nbsp;&nbsp;1</span><span class="lbl">Year concepts</span></div>
-      <div class="stat-box"><span class="big">40+&nbsp;&nbsp;&#8594;&nbsp;&nbsp;1</span><span class="lbl">TDS sections</span></div>
-      <div class="author-box">
-        <b>Submitted by:</b>
-        <div>Shiven Soni, Karthik Singh, Udayan Maheshwari</div>
-        <div>Programme: B.Com (Finance and Investment)</div>
-        <div>Batch: 2024-2027</div>
-        <div>Course: Direct Tax Laws / Income Tax</div>
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="wrap" style="position:relative;">
+    <div class="stamp" aria-hidden="true"></div>
+    <span class="eyebrow">CHRIST (Deemed to be University) · School of Commerce, Finance &amp; Accountancy</span>
+    <h1>Two Acts,<br>one <em>law.</em></h1>
+    <p class="hero-sub">A comparative study of the Income‑tax Act, 1961 and the Income‑tax Act, 2025 — what genuinely changed, what was simply renamed, and what it means for the country living through the handover.</p>
+    <div class="hero-meta">
+      <div class="seal-toggle" id="sealToggle" role="button" tabindex="0" aria-label="Toggle between ITA 1961 and ITA 2025 reading mode">
+        <span class="seal-dot" id="sealDot">1961</span>
+        <span class="seal-toggle-label">Reading as <b id="modeLabel">ITA 1961</b> — tap the seal to switch</span>
+      </div>
+      <div class="section-code">Submitted by Shiven Soni, Karthik Singh &amp; Udayan Maheshwari · B.Com (Finance &amp; Investment) · Batch 2024–2027</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY THE REFORM -->
+<section id="why">
+  <div class="wrap">
+    <span class="eyebrow">01 — Why re‑legislate at all</span>
+    <h2 style="font-size:2.2rem; margin-top:14px;">Sixty‑five years, four thousand amendments.</h2>
+    <div class="lede" style="margin-top:26px;">
+      <p>India's direct tax framework underwent its most significant structural overhaul in over six decades with the enactment of the <strong>Income‑tax Act, 2025 ("ITA 2025")</strong>, effective 1 April 2026, replacing the <strong>Income‑tax Act, 1961 ("ITA 1961")</strong>. Over its 65‑year life, the 1961 Act accumulated more than 4,000 amendments across 65 Finance Acts, leaving a fragmented structure of provisos, explanations, and cross‑references that made compliance difficult without professional help.</p>
+      <p>The Income Tax Department's own stated objective was a streamlined, simplified, modern code with reduced compliance burden and clear definitions — while explicitly clarifying that the new Act <strong>does not impose any new tax</strong>. That single line is the thesis of this whole project: ITA 2025 is a re‑codification of the same policy, not a policy change.</p>
+    </div>
+    <div class="stat-grid">
+      <div class="stat-card"><span class="num">65</span><span class="lbl">years under ITA 1961</span></div>
+      <div class="stat-card"><span class="num">4,000+</span><span class="lbl">amendments accumulated</span></div>
+      <div class="stat-card"><span class="num">65</span><span class="lbl">Finance Acts involved</span></div>
+      <div class="stat-card"><span class="num">1 Apr 2026</span><span class="lbl">ITA 2025 comes into force</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STRUCTURAL COMPARISON -->
+<section id="structure">
+  <div class="wrap">
+    <span class="eyebrow">02 — Structural comparison</span>
+    <h2 style="font-size:2.2rem; margin-top:14px;">Same law, leaner shelf.</h2>
+    <p style="max-width:700px; margin-top:18px;">The most visible difference lies in size and organisation. Section count fell, yet numbering can look larger in places — ITA 2025 drops alphabetical suffixes like 80C and 115BAC in favour of plain sequential numbers, a presentational change rather than an expansion of law.</p>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <span class="num">800+ → 536</span><span class="lbl">Number of sections</span>
+        <span class="old-new">1961: alphabetical sub-sections · 2025: sequential, no suffixes</span>
+      </div>
+      <div class="stat-card">
+        <span class="num">23 / 16</span><span class="lbl">Chapters and Schedules in ITA 2025</span>
+        <span class="old-new">1961: fragmented across decades of amendment</span>
+      </div>
+      <div class="stat-card">
+        <span class="num">40+ → 1</span><span class="lbl">Sections governing TDS</span>
+        <span class="old-new">1961: §192–194T · 2025: consolidated §393</span>
+      </div>
+      <div class="stat-card">
+        <span class="num">2 → 1</span><span class="lbl">Year concepts in use</span>
+        <span class="old-new">1961: Previous Year + Assessment Year · 2025: Tax Year</span>
       </div>
     </div>
-  </header>
-
-  <div class="columns">
-
-    <!-- COLUMN 1 -->
-    <div class="col">
-      <div class="col-title">1&nbsp;&nbsp;Why Re-legislate At All</div>
-      <p class="body-text">India's direct tax framework underwent its biggest structural overhaul in six decades with the <b>Income-tax Act, 2025 (ITA 2025)</b>, effective 1 April 2026, replacing the <b>Income-tax Act, 1961 (ITA 1961)</b>.</p>
-      <p class="body-text">Over 65 years, ITA 1961 gathered more than <b>4,000 amendments</b> across 65 Finance Acts, leaving a fragmented mess of provisos and cross-references.</p>
-      <p class="body-text">The Income Tax Department's own goal: a simplified, modern code with reduced compliance burden — and explicitly, <b>no new tax</b>.</p>
-      <p class="body-text">This is the thesis of the whole assignment: ITA 2025 re-codifies the same policy in clearer form. It does not change the tax burden.</p>
-
-      <div class="col-title">2&nbsp;&nbsp;Structural Comparison</div>
-      <table>
-        <tr><th>Feature</th><th>ITA 1961</th><th>ITA 2025</th></tr>
-        <tr><td>Sections</td><td>800+ (with 80C, 115BAC style suffixes)</td><td>536, plain sequential numbers</td></tr>
-        <tr><td>Chapters/Schedules</td><td>Fragmented over decades</td><td>23 chapters, 16 schedules</td></tr>
-        <tr><td>Year concept</td><td>Previous Year + Assessment Year</td><td>Single "Tax Year"</td></tr>
-        <tr><td>TDS provisions</td><td>Scattered, 40+ sections (192–194T)</td><td>Consolidated, Section 393</td></tr>
+    <div class="table-wrap">
+      <table class="cmp">
+        <thead><tr><th>Feature</th><th>ITA 1961</th><th>ITA 2025</th></tr></thead>
+        <tbody>
+          <tr><td>Presentation style</td><td>Long‑form prose, nested provisos and explanations</td><td>Extensive use of tables and formulas (e.g. TDS rate schedules)</td></tr>
+          <tr><td>Governing period</td><td>Income earned up to 31 Mar 2026; still governs pending matters &amp; past AYs</td><td>Income earned from 1 Apr 2026 onward (Tax Year 2026‑27+)</td></tr>
+        </tbody>
       </table>
-      <p class="small-note">Section count fell, but numbering can look bigger in places — ITA 2025 drops alphabet suffixes (80C, 115BAC) for plain sequential numbers. Presentation change, not an expansion of law.</p>
-
-      <div class="col-title">3&nbsp;&nbsp;"Tax Year" Replaces Two Clocks</div>
-      <p class="body-text"><b>Previous Year</b> (income earned) + <b>Assessment Year</b> (income assessed) &#8594; merged into one unified <b>Tax Year</b>: 1 April to 31 March.</p>
-      <p class="body-text">Nothing changes mechanically — income is still assessed after the year ends. Section 536(3) confirms "tax year" reads as "previous year" for transition purposes.</p>
     </div>
-
-    <!-- COLUMN 2 -->
-    <div class="col">
-      <div class="col-title">4&nbsp;&nbsp;Section Renumbering (Sample Map)</div>
-      <table class="maroon">
-        <tr><th>Subject</th><th>1961</th><th>2025</th></tr>
-        <tr><td>Charging section</td><td>Sec. 4</td><td>Chapter II</td></tr>
-        <tr><td>Default tax regime</td><td>Sec. 115BAC</td><td>Sec. 202</td></tr>
-        <tr><td>Deductions (80C family)</td><td>Sec. 80C–80U</td><td>Sec. 122–154</td></tr>
-        <tr><td>TDS (all types)</td><td>Sec. 192–194T</td><td>Sec. 393</td></tr>
-        <tr><td>Repeal &amp; Savings</td><td>n/a</td><td>Sec. 536</td></tr>
-      </table>
-      <p class="small-note">Caution from practitioners: never apply ITA 2025 numbers retrospectively. AY 2025-26 and earlier must still cite ITA 1961.</p>
-
-      <div class="col-title">5&nbsp;&nbsp;Transition Timeline (Sec. 536)</div>
-      <table class="timeline-table">
-        <tr><td class="date">AY 2023-24</td><td class="desc">Closed assessments stay valid — not reopened by the repeal.</td></tr>
-        <tr><td class="date">AY 2024-25 &amp; earlier</td><td class="desc">Pending appeals (CIT(A), ITAT, courts) still decided under ITA 1961.</td></tr>
-        <tr><td class="date">FY 2025-26 (filed Jul 2026)</td><td class="desc">Governed entirely by ITA 1961, even though filed after ITA 2025 is in force.</td></tr>
-        <tr><td class="date">1 Apr 2026</td><td class="desc">ITA 2025 + new Income-tax Rules, 2026 take effect. Section-mapping utility released.</td></tr>
-        <tr><td class="date">Tax Year 2026-27 (filed ~Jul 2027)</td><td class="desc">First returns fully under ITA 2025.</td></tr>
-      </table>
-
-      <div class="col-title">6&nbsp;&nbsp;What Has NOT Changed</div>
-      <ul class="dash-list">
-        <li>Tax slabs &amp; rates (both regimes) — as per Finance Act, 2025.</li>
-        <li>Sec. 87A rebate — nil tax up to Rs.12 lakh under new regime, retained.</li>
-        <li>Standard deduction of Rs.75,000 for salaried taxpayers continues.</li>
-        <li>80C / 80D-style deductions still available, renumbered only.</li>
-        <li>New regime stays default; old regime optional via Form 10-IEA.</li>
-      </ul>
-    </div>
-
-    <!-- COLUMN 3 -->
-    <div class="col">
-      <div class="col-title">7&nbsp;&nbsp;Who Actually Feels This</div>
-      <p class="body-text"><b>Individual taxpayers:</b> minimal change now. FY 2025-26 returns still cite 80C/80D/115BAC. Biggest visible shift ahead is wording — "Tax Year" replacing "Assessment Year."</p>
-      <p class="body-text"><b>Tax professionals &amp; CAs:</b> the real burden. Must update section tables, ERP/Tally/Zoho TDS codes, templates and case systems — without cross-citing the wrong Act.</p>
-      <p class="body-text"><b>Litigation:</b> ITAT, High Courts &amp; Supreme Court run a dual-track system for years, hearing ITA 1961 and ITA 2025 matters side by side.</p>
-      <p class="body-text"><b>Policy:</b> mirrors a global shift to simpler, principle-based codes — alongside India's digital tax push (pre-filled returns, AIS, faceless assessment).</p>
-
-      <div class="col-title">8&nbsp;&nbsp;Critical Analysis</div>
-      <ul class="dash-list">
-        <li>Renumbering without policy change still costs real retraining time and money.</li>
-        <li>A multi-year dual-citation window raises the risk of accidental misciting.</li>
-        <li>Since this is re-codification (not reform), old disputes may resurface under new numbers.</li>
-        <li>Success depends on CBDT/judiciary keeping section-mapping guidance current.</li>
-      </ul>
-
-      <div class="col-title">9&nbsp;&nbsp;Conclusion</div>
-      <p class="body-text">ITA 2025 modernises the shell — a unified Tax Year, consolidated TDS, tabular presentation and full renumbering — without touching the substantive tax burden.</p>
-      <p class="body-text">Section 536 keeps both Acts alive together for years: ITA 1961 for pre-2026 matters, ITA 2025 for everything after.</p>
-      <p class="body-text"><b>The section numbers changed. The logic behind them did not.</b></p>
-    </div>
-
   </div>
+</section>
 
-  <footer>
-    <span>Sources: Income Tax Department, Govt. of India — "Objective and Scope of the New Act" &amp; "FAQs on Interplay and Transition"; professional commentary (2026).</span>
-    <span>Direct Tax Laws / Income Tax&nbsp;&nbsp;|&nbsp;&nbsp;B.Com (Finance &amp; Investment), 2024-2027</span>
-  </footer>
+<!-- TAX YEAR MERGE -->
+<section id="taxyear">
+  <div class="wrap">
+    <span class="eyebrow">03 — Key conceptual change</span>
+    <h2 style="font-size:2.2rem; margin-top:14px;">"Tax Year" replaces two parallel clocks.</h2>
+    <p style="max-width:700px; margin-top:18px;">Under ITA 1961, taxpayers juggled the <strong>Previous Year</strong> (when income was earned) and the <strong>Assessment Year</strong> (when it was assessed) — a persistent source of confusion for new taxpayers. ITA 2025 folds both into one unified idea. Mechanically nothing changes: income is still assessed after the year ends. Only the label is simpler, and Section 536(3) confirms "tax year" reads as "previous year" for transitional purposes.</p>
+    <div style="position:relative;">
+      <div class="merge-stage" id="mergeStage">
+        <div class="merge-box a"><b>Previous Year</b>The financial year in which income is earned</div>
+        <div class="merge-arrow">+</div>
+        <div class="merge-box b"><b>Assessment Year</b>The following year in which income is assessed &amp; return filed</div>
+        <div class="merge-result" id="mergeResult"><b>Tax Year</b>A single 12‑month period, 1 April – 31 March, under ITA 2025</div>
+      </div>
+    </div>
+    <button class="merge-btn" id="mergeBtn">Run the merge →</button>
+  </div>
+</section>
 
-</div>
+<!-- SECTION REMAPPING -->
+<section id="remap">
+  <div class="wrap">
+    <span class="eyebrow">04 — Section renumbering</span>
+    <h2 style="font-size:2.2rem; margin-top:14px;">Nearly every citation moved. Flip a card to find it.</h2>
+    <p style="max-width:700px; margin-top:18px;">This is the change most likely to disrupt day‑to‑day practice: software, client communication, and legal drafting all lean on familiar section numbers. Professional commentary is unanimous on one caution — <strong>do not apply ITA 2025 numbering retrospectively</strong>. Matters relating to AY 2025‑26 and earlier must still cite ITA 1961.</p>
+    <div class="flip-grid" id="flipGrid"></div>
+    <p class="flip-hint">tap any card to flip it</p>
+  </div>
+</section>
+
+<!-- TRANSITION TIMELINE -->
+<section id="transition">
+  <div class="wrap">
+    <span class="eyebrow">05 — Continuity &amp; transition</span>
+    <h2 style="font-size:2.2rem; margin-top:14px;">Section 536 keeps both Acts alive at once.</h2>
+    <p style="max-width:700px; margin-top:18px;">The Repeal and Savings clause provides that repealing ITA 1961 on 1 April 2026 does not disturb assessments, proceedings, or appeals relating to years before that date. In practice:</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <span class="date">AY 2023‑24</span>
+        <h3>Assessments already completed stay valid</h3>
+        <p>Closed assessments under ITA 1961 are not reopened or disturbed by the repeal.</p>
+      </div>
+      <div class="tl-item">
+        <span class="date">AY 2024‑25 and earlier</span>
+        <h3>Pending appeals stay on the old Act</h3>
+        <p>CIT(A), ITAT, High Courts and the Supreme Court continue to decide these matters under ITA 1961.</p>
+      </div>
+      <div class="tl-item">
+        <span class="date">FY 2025‑26 → filed July 2026</span>
+        <h3>Governed entirely by ITA 1961</h3>
+        <p>Even though the return is filed after ITA 2025 is already in force, this income year is judged under the old Act.</p>
+      </div>
+      <div class="tl-item">
+        <span class="date">1 April 2026</span>
+        <h3>ITA 2025 comes into force</h3>
+        <p>The Income‑tax Rules, 2026 replace the Income‑tax Rules, 1962 from the same date. A section‑mapping utility is released to help the transition.</p>
+      </div>
+      <div class="tl-item">
+        <span class="date">Tax Year 2026‑27 → filed ~July 2027</span>
+        <h3>First returns fully under ITA 2025</h3>
+        <p>Income earned from 1 April 2026 onward is described as Tax Year 2026‑27 and governed by the new Act.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT HASN'T CHANGED -->
+<section id="unchanged">
+  <div class="wrap">
+    <span class="eyebrow">06 — What has not changed</span>
+    <h2 style="font-size:2.2rem; margin-top:14px;">The substance was never up for debate.</h2>
+    <div class="check-grid">
+      <div class="check-item"><span class="mark">✓</span><p>Income tax slabs and rates, under both regimes, remain exactly as legislated under the Finance Act, 2025.</p></div>
+      <div class="check-item"><span class="mark">✓</span><p>The Section 87A rebate — effectively nil tax up to ₹12 lakh under the new regime — is retained, just renumbered.</p></div>
+      <div class="check-item"><span class="mark">✓</span><p>The ₹75,000 standard deduction for salaried taxpayers under the new regime continues unchanged.</p></div>
+      <div class="check-item"><span class="mark">✓</span><p>Deductions similar to 80C and 80D remain available, under Sections 122–154 in ITA 2025.</p></div>
+      <div class="check-item"><span class="mark">✓</span><p>The new regime stays the default; taxpayers can still opt for the old regime via Form 10‑IEA.</p></div>
+      <div class="check-item"><span class="mark">✓</span><p>Same judicial precedents, same legislative intent — only the section numbers encoding them have changed.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPLICATIONS -->
+<section id="implications">
+  <div class="wrap">
+    <span class="eyebrow">07 — Who actually feels this</span>
+    <h2 style="font-size:2.2rem; margin-top:14px;">Impact depends entirely on who's asking.</h2>
+    <div class="tabs" id="tabBar">
+      <button class="tab-btn active" data-tab="t1">Individual taxpayers</button>
+      <button class="tab-btn" data-tab="t2">Tax professionals</button>
+      <button class="tab-btn" data-tab="t3">Litigation</button>
+      <button class="tab-btn" data-tab="t4">Policy</button>
+    </div>
+    <div class="tab-panel active" id="t1"><p>Limited immediate impact. Returns filed in July 2026 for FY 2025‑26 still reference familiar Sections 80C, 80D and 115BAC, and use existing forms like Form 16 and Form 26AS. The visible change ahead is vocabulary — "Assessment Year" giving way to "Tax Year" in notices and returns from FY 2026‑27.</p></div>
+    <div class="tab-panel" id="t2"><p>Far more significant. CAs, tax lawyers and finance teams must update section‑reference tables, ERP and accounting software (Tally, Zoho and similar) for TDS codes, client templates and case‑management systems — while being careful never to cite ITA 2025 provisions for years still governed by ITA 1961, or vice versa.</p></div>
+    <div class="tab-panel" id="t3"><p>A genuine dual‑track burden. The ITAT registry, High Courts and Supreme Court must simultaneously handle ITA 1961 appeals for pre‑April 2026 years and a growing volume of ITA 2025 matters — likely to persist for several years as older assessment years work through the system.</p></div>
+    <div class="tab-panel" id="t4"><p>The reform mirrors a global shift toward simplified, principle‑based tax codes and taxpayer‑centric compliance — aligning with India's wider digital tax push: pre‑filled returns, the Annual Information Statement, and faceless assessment.</p></div>
+  </div>
+</section>
+
+<!-- CRITICAL ANALYSIS -->
+<section id="critical">
+  <div class="wrap">
+    <span class="eyebrow">08 — Reading it critically</span>
+    <h2 style="font-size:2.2rem; margin-top:14px;">Housekeeping isn't free.</h2>
+    <div class="note">
+      <span class="tag">Cost of renumbering</span>
+      <p>Renumbering without policy change still imposes a real, non‑trivial retraining and compliance cost on software vendors, professionals and institutions — even though the underlying law hasn't moved.</p>
+    </div>
+    <div class="note">
+      <span class="tag">Dual‑citation risk</span>
+      <p>The multi‑year window where both Acts apply to different periods raises the risk of inadvertent misciting in submissions, notices, and even judicial orders.</p>
+    </div>
+    <div class="note">
+      <span class="tag">Litigation, unchanged</span>
+      <p>Because this is re‑codification, not policy reform, claims that it will cut litigation should be treated cautiously — the same interpretive disputes are likely to resurface under new section numbers.</p>
+    </div>
+    <div class="note">
+      <span class="tag">Execution dependency</span>
+      <p>The simplification goal depends on CBDT and the judiciary keeping cross‑reference material current — any lag could temporarily increase reliance on external commentary, not reduce it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONCLUSION -->
+<section id="conclusion">
+  <div class="wrap">
+    <span class="eyebrow">09 — Conclusion</span>
+    <div class="split" style="margin-top:24px;">
+      <div>
+        <h2 style="font-size:1.9rem;">The numbers changed. The logic didn't.</h2>
+        <p style="margin-top:16px;">ITA 2025 is a long‑overdue structural modernisation — a unified Tax Year, section consolidation, tabular presentation, and comprehensive renumbering, all improving readability without touching the substantive tax burden. Meanwhile Section 536 keeps both Acts simultaneously relevant for years: ITA 1961 for pre‑April 2026 years and pending proceedings, ITA 2025 for everything after.</p>
+      </div>
+      <div>
+        <p style="margin-top:16px;">A sound understanding of Indian income tax — old Act or new — ultimately rests on the same legal principles, judicial precedent, and legislative intent that gave the original provisions their meaning. <strong>The numbers may have changed; the logic they encode has not.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">References</span>
+      <ul class="ref-list">
+        <li>Income Tax Department, Government of India — "Objective and Scope of the New Act," incometax.gov.in.</li>
+        <li>Income Tax Department, Government of India — "FAQs on Interplay and Transition," incometaxindia.gov.in.</li>
+        <li>Professional commentary and section‑mapping guides on ITA 2025 vs ITA 1961, tax advisory &amp; compliance platforms (2026).</li>
+      </ul>
+      <p style="margin-top:14px; max-width:640px;">Note: current as of mid‑2026. As CBDT circulars continue to be issued, verify the latest section numbers on the Income Tax Department's official portal before relying on them.</p>
+    </div>
+    <div class="section-code">
+      Christ (Deemed to be University)<br>School of Commerce, Finance &amp; Accountancy<br>Shiven Soni, Karthik Singh &amp; Udayan Maheshwari<br>B.Com (Finance &amp; Investment), Batch 2024–2027<br>Direct Tax Laws / Income Tax
+    </div>
+  </div>
+</footer>
+
+<script>
+// ---- Seal toggle: switch reading mode between ITA 1961 and ITA 2025 ----
+const html = document.documentElement;
+const sealToggle = document.getElementById('sealToggle');
+const sealDot = document.getElementById('sealDot');
+const modeLabel = document.getElementById('modeLabel');
+function setMode(mode){
+  html.setAttribute('data-mode', mode);
+  sealDot.textContent = mode === 'old' ? '1961' : '2025';
+  modeLabel.textContent = mode === 'old' ? 'ITA 1961' : 'ITA 2025';
+}
+sealToggle.addEventListener('click', ()=>{
+  setMode(html.getAttribute('data-mode') === 'old' ? 'new' : 'old');
+});
+sealToggle.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); sealToggle.click(); }});
+
+// ---- Nav dots active state ----
+const dots = document.querySelectorAll('#navdots a');
+const sections = [...dots].map(d => document.getElementById(d.dataset.target));
+function updateDots(){
+  let idx = 0;
+  sections.forEach((s,i)=>{ if(s && s.getBoundingClientRect().top < window.innerHeight*0.5) idx = i; });
+  dots.forEach((d,i)=> d.classList.toggle('active', i===idx));
+}
+window.addEventListener('scroll', updateDots);
+updateDots();
+
+// ---- Tax year merge animation ----
+const mergeBtn = document.getElementById('mergeBtn');
+const mergeStage = document.getElementById('mergeStage');
+mergeBtn.addEventListener('click', ()=>{
+  const merged = mergeStage.classList.toggle('merged');
+  mergeBtn.textContent = merged ? '← Undo the merge' : 'Run the merge →';
+});
+
+// ---- Section remapping flip cards ----
+const mappings = [
+  {tag:'Charging section', old:'Section 4', neu:'Chapter II (simplified charging provision)'},
+  {tag:'Tax Year definition', old:'Section 3 (Previous Year)', neu:'Section 3 (Tax Year)'},
+  {tag:'Default regime', old:'Section 115BAC', neu:'Section 202'},
+  {tag:'Deductions (80C–80U family)', old:'Sections 80C–80U', neu:'Sections 122–154'},
+  {tag:'TDS provisions', old:'Sections 192–194T (40+ sections)', neu:'Section 393 (consolidated)'},
+  {tag:'Repeal &amp; Savings / Transition', old:'Not applicable', neu:'Section 536'},
+];
+const flipGrid = document.getElementById('flipGrid');
+mappings.forEach(m=>{
+  const card = document.createElement('div');
+  card.className = 'flip-card';
+  card.innerHTML = `
+    <div class="flip-inner">
+      <div class="flip-face flip-front">
+        <span class="tag">${m.tag}</span>
+        <span class="sec">${m.old}</span>
+        <span class="section-code">ITA 1961 — tap to see 2025</span>
+      </div>
+      <div class="flip-face flip-back">
+        <span class="tag">${m.tag}</span>
+        <span class="sec">${m.neu}</span>
+        <span class="section-code">ITA 2025</span>
+      </div>
+    </div>`;
+  card.addEventListener('click', ()=> card.classList.toggle('flipped'));
+  flipGrid.appendChild(card);
+});
+
+// ---- Implications tabs ----
+const tabBar = document.getElementById('tabBar');
+tabBar.addEventListener('click', (e)=>{
+  const btn = e.target.closest('.tab-btn');
+  if(!btn) return;
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(btn.dataset.tab).classList.add('active');
+});
+
+// ---- Count-up animation for stat cards ----
+const statObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.style.opacity = 1;
+      entry.target.style.transform = 'translateY(0)';
+      statObserver.unobserve(entry.target);
+    }
+  });
+},{threshold:0.2});
+document.querySelectorAll('.stat-card').forEach(card=>{
+  card.style.opacity = 0;
+  card.style.transform = 'translateY(14px)';
+  card.style.transition = 'all 0.6s ease';
+  statObserver.observe(card);
+});
+</script>
 </body>
 </html>
